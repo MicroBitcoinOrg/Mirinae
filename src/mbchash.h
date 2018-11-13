@@ -7,6 +7,7 @@ extern "C" {
 #endif
 
 void groestl(const unsigned char* input, int length, char* output);
+void mbchash(const unsigned char* input, int length, char* output);
 
 #ifdef __cplusplus
 }

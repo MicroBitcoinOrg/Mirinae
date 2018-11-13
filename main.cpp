@@ -26,7 +26,9 @@ int main() {
         const unsigned char *input = bytes;
         char output[32];
 
-        groestl(input, data_length, output);
+        // groestl(input, data_length, output);
+        mbchash(input, data_length, output);
+
         hash = string_reverse(hex_convert(output, 32));
 
         std::cout << "Hash: " << hash << " Nonce: " << nonce << std::endl;
