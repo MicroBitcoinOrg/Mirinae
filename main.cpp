@@ -12,6 +12,7 @@ int main() {
     int64_t timestamp = 1540596242;
     int64_t bits = 520159231;
     int64_t nonce = 0;
+    int64_t height = 525001;
 
     std::string hash = "";
     std::string prefix = target(bits);
@@ -19,23 +20,24 @@ int main() {
     while (hash.compare(0, prefix.size(), prefix)) {
         std::string header_hex = block_header(version, prev_block, merkle_root, timestamp, bits, nonce);
 
-        int data_length = header_hex.length() / 2;
-        unsigned char bytes[data_length];
+        unsigned char bytes[header_hex.length() / 2];
         bytes_convert(header_hex, bytes);
 
+        unsigned char bytes_block[32];
+        bytes_convert(prev_block, bytes_block);
+
         const unsigned char *input = bytes;
+        const unsigned char *block_hash = bytes_block;
         char output[32];
 
-        // groestl(input, data_length, output);
-        mbchash(input, data_length, output);
-
+        mbchash(input, block_hash, height, header_hex.length() / 2, output);
         hash = string_reverse(hex_convert(output, 32));
 
         std::cout << "Hash: " << hash << " Nonce: " << nonce << std::endl;
-
         nonce++;
     }
 
+    nonce--;
     std::cout << std::endl;
     std::cout << "Hash: " << hash << std::endl;
     std::cout << "Nonce: " << nonce << std::endl;
