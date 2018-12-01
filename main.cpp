@@ -7,12 +7,12 @@
 
 int main() {
     int64_t version = 2;
-    std::string prev_block = "0000acc34646b8285eafd0e6419e0fcf4c0577562eac23d632d123931e0fff72";
+    int64_t height = 525001;
+    std::string prev_block = "0000acc34546b8285eafd0e6419e0fcf4c0577562eac23d632d123931e0fff72";
     std::string merkle_root = "5e9846ebda6e8687582336d52e5a1b54974cc44c1156c267cf46d9c992bad96d";
     int64_t timestamp = 1540596242;
     int64_t bits = 520159231;
     int64_t nonce = 0;
-    int64_t height = 525001;
 
     std::string hash = "";
     std::string prefix = target(bits);

@@ -32,7 +32,7 @@ void mbchash(const unsigned char* block_raw, const unsigned char* prev_block, in
 	
 	unsigned char hash[64] = { 0 };
 	unsigned char offset[8] = { 0 };
-	int window = 4096;
+	const int window = 4096;
 	int64_t n = 0;
 
 	sph_groestl512_context ctx_groestl;
@@ -43,7 +43,7 @@ void mbchash(const unsigned char* block_raw, const unsigned char* prev_block, in
 	kupyna512_final(&ctx_kupyna, offset);
 	
 	memcpy(&n, offset, 8);
-	int iterations = (((n % height) + (height + 1)) % window);
+	unsigned int iterations = (((n % height) + (height + 1)) % window);
 
 	sph_groestl512_init(&ctx_groestl);
 	sph_groestl512(&ctx_groestl, block, size);
