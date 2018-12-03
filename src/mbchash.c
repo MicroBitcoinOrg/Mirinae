@@ -31,7 +31,7 @@ void mbchash(const unsigned char* block_raw, const unsigned char* prev_block, in
 	const void *block = block_raw;
 	
 	unsigned char hash[64] = { 0 };
-	unsigned char offset[8] = { 0 };
+	unsigned char offset[64] = { 0 };
 	const int window = 4096;
 	int64_t n = 0;
 
@@ -39,7 +39,7 @@ void mbchash(const unsigned char* block_raw, const unsigned char* prev_block, in
 	struct kupyna512_ctx_t ctx_kupyna;
 
 	kupyna512_init(&ctx_kupyna);
-	kupyna512_update(&ctx_kupyna, block_hash, 8);
+	kupyna512_update(&ctx_kupyna, block_hash, 64);
 	kupyna512_final(&ctx_kupyna, offset);
 	
 	memcpy(&n, offset, 8);
