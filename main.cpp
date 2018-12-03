@@ -1,5 +1,7 @@
 // Copyright (c) 2018 iamstenman
 #include <iostream>
+#include <stdint.h>
+#include <string.h>
 
 #include "src/converter/base_converter.h"
 #include "src/mbchash.h"
