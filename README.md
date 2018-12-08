@@ -5,7 +5,7 @@ This is official implementation of Mirinae hash function used by [MicroBitcoin](
 ## Motivation
 Main motivation for development of this algo - create new ASICs resistant hash function which will replace Groestl512 after Baikal G28 appearance.  
 Special thanks to **whitefire990** and **DigitalCruncher** for help with dicsussion/development of this algo.
-Also big thanks to Turtlecoin devs for [this](https://medium.com/@turtlecoin/introducing-cryptonight-soft-shell-2c2d4c497efd) article which Mirinae hash heavily inspired by. 
+Also cheers to Turtlecoin devs for [this](https://medium.com/@turtlecoin/introducing-cryptonight-soft-shell-2c2d4c497efd) article which Mirinae hash heavily inspired by. 
 
 ## Usage:
 
@@ -28,3 +28,5 @@ and run it by:
 ```
 ./mbc_hash
 ```
+
+Developed with love by **iamstenman**
