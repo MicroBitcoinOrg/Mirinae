@@ -1,7 +1,9 @@
 // Copyright (c) 2018 iamstenman
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "utils/converter/base_converter.h"
 #include "utils/utils.h"
-#include "mbchash.h"
+#include "mirinae.h"
 
 #include <iostream>
 #include <stdint.h>
@@ -32,7 +34,7 @@ int main() {
         const unsigned char *block_hash = bytes_block;
         char output[32];
 
-        mbchash(input, header_hex.length() / 2, output, height, block_hash);
+        mirinae(input, header_hex.length() / 2, output, height, block_hash);
         hash = string_reverse(hex_convert(output, 32));
 
         std::cout << "Hash: " << hash << " Nonce: " << nonce << std::endl;

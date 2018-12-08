@@ -1,3 +1,6 @@
+// Kupyna implementation by sjinks
+// https://github.com/sjinks/kupyna-c/
+
 #include "kupyna_tables.h"
 
 const uint64_t T0[256] = {

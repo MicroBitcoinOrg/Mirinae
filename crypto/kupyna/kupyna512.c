@@ -1,3 +1,6 @@
+// Kupyna implementation by sjinks
+// https://github.com/sjinks/kupyna-c/
+
 #include <string.h>
 #include <assert.h>
 #include "kupyna512.h"

@@ -1,3 +1,6 @@
+// Kupyna implementation by sjinks
+// https://github.com/sjinks/kupyna-c/
+
 #ifndef KUPYNA_TABLES_H_
 #define KUPYNA_TABLES_H_
 

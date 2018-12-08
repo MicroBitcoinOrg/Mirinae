@@ -1,3 +1,6 @@
+// Kupyna hash function implementation by sjinks
+// https://github.com/sjinks/kupyna-c/
+
 #ifndef KUPYNA512_H_
 #define KUPYNA512_H_
 

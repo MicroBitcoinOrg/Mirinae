@@ -1,10 +1,13 @@
 // Copyright (c) 2018 iamstenman
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "crypto/sph/sph_groestl.h"
 #include "crypto/kupyna/kupyna512.h"
-#include "mbchash.h"
+#include "mirinae.h"
 #include <memory.h>
 
-void mbchash(const void* data, size_t length, void* output, int height, const void* seed)
+void mirinae(const void* data, size_t length, void* output, int height, const void* seed)
 {	
 	unsigned char hash[64] = { 0 };
 	unsigned char offset[64] = { 0 };

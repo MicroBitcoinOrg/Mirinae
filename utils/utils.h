@@ -1,4 +1,7 @@
 // Copyright (c) 2018 iamstenman
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include <sstream>
 #include <iomanip>
 #include <cmath>
