@@ -13,11 +13,11 @@ Also cheers to Turtlecoin devs for [this](https://medium.com/@turtlecoin/introdu
 mirinae(const void* data, size_t length, void* output, int height, const void* seed)
 ```
 
-`data` - raw block header  
-`length` - data length  
-`output` - variable which receive hash output by `memcpy`  
-`height` - new block height  
-`seed` - arbitrary data with length 64 (recomended to use previous block hash)  
+**data** - raw block header  
+**length** - data length  
+**output** - variable which receive hash output by `memcpy`  
+**height** - new block height  
+**seed** - arbitrary data with length 64 (recomended to use previous block hash)  
 
 You can build demo app using this command:  
 ```
