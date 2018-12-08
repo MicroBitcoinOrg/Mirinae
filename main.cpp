@@ -1,11 +1,11 @@
 // Copyright (c) 2018 iamstenman
+#include "utils/converter/base_converter.h"
+#include "utils/utils.h"
+#include "mbchash.h"
+
 #include <iostream>
 #include <stdint.h>
 #include <string.h>
-
-#include "src/converter/base_converter.h"
-#include "src/mbchash.h"
-#include "src/util.h"
 
 int main() {
     int64_t version = 2;
@@ -32,7 +32,7 @@ int main() {
         const unsigned char *block_hash = bytes_block;
         char output[32];
 
-        mbchash(input, block_hash, height, header_hex.length() / 2, output);
+        mbchash(input, header_hex.length() / 2, output, height, block_hash);
         hash = string_reverse(hex_convert(output, 32));
 
         std::cout << "Hash: " << hash << " Nonce: " << nonce << std::endl;
