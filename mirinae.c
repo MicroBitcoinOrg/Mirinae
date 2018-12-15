@@ -28,7 +28,7 @@ void mirinae(const void* data, size_t length, void* output, int height, const vo
 	sph_groestl512(&ctx_groestl, data, length);
 	sph_groestl512_close(&ctx_groestl, hash);
 
-	int h_loop = hash[0];
+	unsigned int h_loop = hash[0];
 	for (int i = 0; i < iterations; i++) {
 		for (int j = 0; j < h_loop; j++) {
 			kupyna512_init(&ctx_kupyna);
