@@ -8,7 +8,7 @@
 #include <memory.h>
 
 void mirinae(const void* data, size_t length, void* output, int height, const void* seed)
-{	
+{
 	unsigned char hash[64] = { 0 };
 	unsigned char offset[64] = { 0 };
 	const int window = 4096;
@@ -28,12 +28,15 @@ void mirinae(const void* data, size_t length, void* output, int height, const vo
 	sph_groestl512(&ctx_groestl, data, length);
 	sph_groestl512_close(&ctx_groestl, hash);
 
+	int h_loop = hash[0];
 	for (int i = 0; i < iterations; i++) {
-		for (int j = 0; j < hash[0]; j++) {
+		for (int j = 0; j < h_loop; j++) {
 			kupyna512_init(&ctx_kupyna);
 			kupyna512_update(&ctx_kupyna, hash, 64);
 			kupyna512_final(&ctx_kupyna, hash);
 		}
+
+		h_loop = hash[0];
 	}
 
 	sph_groestl512_init(&ctx_groestl);
