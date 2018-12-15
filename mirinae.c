@@ -18,7 +18,7 @@ void mirinae(const void* data, size_t length, void* output, int height, const vo
 	struct kupyna512_ctx_t ctx_kupyna;
 
 	kupyna512_init(&ctx_kupyna);
-	kupyna512_update(&ctx_kupyna, seed, 64);
+	kupyna512_update(&ctx_kupyna, seed, 32);
 	kupyna512_final(&ctx_kupyna, offset);
 	
 	memcpy(&n, offset, 8);
