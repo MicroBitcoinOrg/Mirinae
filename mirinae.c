@@ -11,7 +11,7 @@ void mirinae(const void* data, size_t length, void* output, int height, const vo
 {
 	unsigned char hash[64] = { 0 };
 	unsigned char offset[64] = { 0 };
-	const int window = 4096;
+	const int window = 256;
 	const int aperture = 32;
 	int64_t n = 0;
 
@@ -27,15 +27,17 @@ void mirinae(const void* data, size_t length, void* output, int height, const vo
 	sph_groestl512(&ctx_groestl, data, length);
 	sph_groestl512_close(&ctx_groestl, hash);
 
-	unsigned int h_loop = hash[0];
-	for (int i = 0; i < (((n % height) + (height + 1)) % window); i++) {
-		for (int j = 0; j < (h_loop % aperture); j++) {
+	unsigned int light = (hash[0] > 0) ? hash[0] : 1;
+	unsigned int outer_loop = (((n % height) + (height + 1)) % window);
+	for (int i = 0; i < outer_loop; i++) {
+		unsigned int inner_loop = (light % aperture);
+		for (int j = 0; j < inner_loop; j++) {
 			kupyna512_init(&ctx_kupyna);
 			kupyna512_update(&ctx_kupyna, hash, 64);
 			kupyna512_final(&ctx_kupyna, hash);
 		}
 
-		h_loop = hash[0];
+		light = (hash[inner_loop] > 0) ? hash[inner_loop] : 1;
 	}
 
 	sph_groestl512_init(&ctx_groestl);
