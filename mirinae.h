@@ -9,7 +9,7 @@
 extern "C" {
 #endif
 
-void mirinae(const void* data, size_t length, void* output, int height, const void* seed);
+void mirinae(const void* input, void* output, size_t length, int height);
 
 #ifdef __cplusplus
 }

@@ -27,14 +27,10 @@ int main() {
         unsigned char bytes[header_hex.length() / 2];
         bytes_convert(header_hex, bytes);
 
-        unsigned char bytes_block[32];
-        bytes_convert(prev_block, bytes_block);
-
         const unsigned char *input = bytes;
-        const unsigned char *block_hash = bytes_block;
         char output[32];
 
-        mirinae(input, header_hex.length() / 2, output, height, block_hash);
+        mirinae(input, output, header_hex.length() / 2, height);
         hash = string_reverse(hex_convert(output, 32));
 
         std::cout << "Hash: " << hash << " Nonce: " << nonce << std::endl;
