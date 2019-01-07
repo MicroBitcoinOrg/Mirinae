@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef MBCHASH_H
-#define MBCHASH_H
+#ifndef MIRINAE_H
+#define MIRINAE_H
 
 #ifdef __cplusplus
 extern "C" {
