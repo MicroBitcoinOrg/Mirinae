@@ -7,8 +7,15 @@
 #include "mirinae.h"
 #include <memory.h>
 
+// You can use any arbitrary data as seed
+// In case of MBC mirinae uses previous block hash from block header
+void get_seed(const void* input, unsigned char* seed) {
+	memcpy(seed, input + 4, (36 - 4) * sizeof(*input));
+}
+
 void mirinae(const void* input, void* output, size_t length, int height)
 {
+	assert(height > 0);
 	unsigned char hash[64] = { 0 };
 	unsigned char offset[64] = { 0 };
 	unsigned char seed[32] = { 0 };
@@ -18,7 +25,7 @@ void mirinae(const void* input, void* output, size_t length, int height)
 
 	sph_groestl512_context ctx_groestl;
 	struct kupyna512_ctx_t ctx_kupyna;
-	memcpy(seed, input + 4, (36 - 4) * sizeof(*input));
+	get_seed(input, seed);
 
 	kupyna512_init(&ctx_kupyna);
 	kupyna512_update(&ctx_kupyna, seed, 32);
