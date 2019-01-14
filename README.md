@@ -14,7 +14,7 @@ void mirinae(const void* input, void* output, size_t length, int height)
 
 **input** - raw block header  
 **output** - variable which receive hash output by `memcpy`  
-**length** - data length
+**length** - data length  
 **height** - new block height  
 
 You can build demo app using this command:  
