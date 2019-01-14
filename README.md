@@ -9,14 +9,13 @@ Also cheers to Turtlecoin devs for [this](https://medium.com/@turtlecoin/introdu
 
 ## Usage:
 ```
-mirinae(const void* data, size_t length, void* output, int height, const void* seed)
+void mirinae(const void* input, void* output, size_t length, int height)
 ```
 
-**data** - raw block header  
-**length** - data length  
+**input** - raw block header  
 **output** - variable which receive hash output by `memcpy`  
+**length** - data length
 **height** - new block height  
-**seed** - arbitrary data with length 64 (recomended to use previous block hash)  
 
 You can build demo app using this command:  
 ```
