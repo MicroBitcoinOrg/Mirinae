@@ -69,20 +69,20 @@ void mirinae(const void* input, void* output, size_t length, int height)
 	const int window = 32;
 	const int aperture = 32;
 	bool enable_kittens = false;
+	int64_t n = 0;
+
+	sph_groestl512_context ctx_groestl;
+	struct kupyna512_ctx_t ctx_kupyna;
+	seed_get(input, seed);
 
 	if (enable_kittens) {
-		int64_t n = 0;
 		kupyna512_init(&ctx_kupyna);
 		kupyna512_update(&ctx_kupyna, seed, 32);
 		kupyna512_final(&ctx_kupyna, offset);
 		memcpy(&n, offset, 8);
 	} else {
-		int64_t n = murmur3(seed, 32, height);
+		n = murmur3(seed, 32, height);
 	}
-	
-	sph_groestl512_context ctx_groestl;
-	struct kupyna512_ctx_t ctx_kupyna;
-	seed_get(input, seed);
 
 	sph_groestl512_init(&ctx_groestl);
 	sph_groestl512(&ctx_groestl, input, length);
