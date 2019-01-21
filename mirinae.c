@@ -53,6 +53,12 @@ uint32_t murmur3(const uint8_t* key, size_t len, uint32_t seed) {
 	return h;
 }
 
+// You can use any arbitrary data as seed
+// In case of MBC mirinae uses previous block hash from block header
+void seed_get(const void* input, unsigned char* seed) {
+	memcpy(seed, input + 4, (36 - 4) * sizeof(*input));
+}
+
 // All magic is here!
 void mirinae(const void* input, void* output, size_t length, int height)
 {
@@ -62,12 +68,21 @@ void mirinae(const void* input, void* output, size_t length, int height)
 	unsigned char seed[32] = { 0 };
 	const int window = 32;
 	const int aperture = 32;
+	bool enable_kittens = false;
 
-	seed_get(input, seed);
-	int64_t n = murmur3(seed, 32, height);
+	if (enable_kittens) {
+		int64_t n = 0;
+		kupyna512_init(&ctx_kupyna);
+		kupyna512_update(&ctx_kupyna, seed, 32);
+		kupyna512_final(&ctx_kupyna, offset);
+		memcpy(&n, offset, 8);
+	} else {
+		int64_t n = murmur3(seed, 32, height);
+	}
 	
 	sph_groestl512_context ctx_groestl;
 	struct kupyna512_ctx_t ctx_kupyna;
+	seed_get(input, seed);
 
 	sph_groestl512_init(&ctx_groestl);
 	sph_groestl512(&ctx_groestl, input, length);
